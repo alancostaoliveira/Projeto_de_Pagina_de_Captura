@@ -1,0 +1,105 @@
+// -----------------------------------------------------------------------------
+// Esse arquivo contém variables, functions, mixins e includes
+// -----------------------------------------------------------------------------
+
+// Variáveis
+$cor-preta: #1a1b1f;
+$cor-cinza-claro: #f1f1f1;
+$cor-cinza: #e1e1e1;
+$cor-cinza-escuro: #4b4d4d;
+$cor-azul-claro: #256783;
+$cor-azul-escuro: #1c415c;
+$cor-amarelo: #eebe2a;
+$cor-amarelo-claro: #ffd24a;
+
+// Mixins
+@mixin flex(
+  $direction: row,
+  $wrap: nowrap,
+  $align: stretch,
+  $justify: flex-start,
+  $gap: 0
+) {
+  display: flex;
+  flex-flow: $direction $wrap;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap;
+}
+
+@mixin respond($tamanho) {
+  @if $tamanho == big {
+    @media (max-width: 60.625em) {
+      @content;
+    }
+  } @else if $tamanho == medium {
+    @media (max-width: 54.125em) {
+      @content;
+    }
+  } @else if $tamanho == small {
+    @media (max-width: 48.125em) {
+      @content;
+    }
+  } @else if $tamanho == tiny {
+    @media (max-width: 30em) {
+      @content;
+    }
+  }
+}
+
+// Extend
+%titulo {
+  font-size: 4.78rem;
+  line-height: 1;
+
+  @include respond(small) {
+    font-size: 3.98rem;
+  }
+
+  @include respond(tiny) {
+    font-size: 3.32rem;
+  }
+}
+
+%subtitulo {
+  font-size: 2.76rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+%subtitulo--pequeno {
+  font-size: 2.3rem;
+}
+
+%botao {
+  border-radius: 5rem;
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  border: solid 2px #000;
+  border-right-width: 4px;
+  border-bottom-width: 4px;
+
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.92rem;
+
+  &:hover {
+    border-width: 3px;
+  }
+}
+
+%botao--amarelo {
+  background-color: $cor-amarelo-claro;
+  border-color: darken($cor-amarelo-claro, 40%);
+  color: darken($cor-azul-escuro, 10%);
+}
+
+%botao--centralizado {
+  align-self: center;
+}
+
+%botao--texto-pequeno {
+  @include respond(tiny) {
+    font-size: 1.6rem;
+  }
+}

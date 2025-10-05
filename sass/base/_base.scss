@@ -1,0 +1,27 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+
+  @include respond(big) {
+    font-size: 56.25%;
+  }
+
+  @include respond(medium) {
+    font-size: 50%;
+  }
+}
+
+img {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+}

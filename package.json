@@ -1,0 +1,28 @@
+{
+  "name": "sass",
+  "version": "1.0.0",
+  "description": "projeto de pagina de captura",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "sass sass/main.scss css/style.css -w",
+    "compile:sass": "sass sass/main.scss css/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.comp.css -o css/style.prefix.css",
+    "compress:css": "sass css/style.prefix.css css/style.css --style compressed",
+    "build:css": "npm-run-all compile:sass prefix:css compress:css",
+    "serve": "npx http-server -p 8000 -c-1",
+    "qa:serve": "npx http-server -p 8000 -c-1",
+    "qa:run": "node qa/run-qa.js",
+    "qa": "npm-run-all -p qa:serve qa:run"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "http-server": "^14.1.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "puppeteer": "^24.23.0",
+    "sass": "^1.69.3"
+  }
+}
